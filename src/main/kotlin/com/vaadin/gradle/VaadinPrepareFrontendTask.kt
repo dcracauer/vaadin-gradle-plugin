@@ -81,6 +81,8 @@ open class VaadinPrepareFrontendTask : DefaultTask() {
                 extension.generatedFolder, extension.frontendDirectory)
                 .withWebpack(extension.webpackOutputDirectory!!, extension.webpackTemplate, extension.webpackGeneratedTemplate)
                 .createMissingPackageJson(true)
+                .useV14Bootstrap(extension.useDeprecatedV14Bootstrapping)
+                .withFlowResourcesFolder(extension.flowResourcesFolder)
                 .enableImportsUpdate(false)
                 .enablePackagesUpdate(false)
                 .runNpmInstall(false)
@@ -104,7 +106,6 @@ open class VaadinPrepareFrontendTask : DefaultTask() {
         val configFolder = File("${extension.buildOutputDirectory}/META-INF/VAADIN/config")
         Files.createDirectories(configFolder.toPath())
         val buildInfo: JsonObject = Json.createObject().apply {
-            put(Constants.SERVLET_PARAMETER_COMPATIBILITY_MODE, false)
             put(Constants.SERVLET_PARAMETER_PRODUCTION_MODE, extension.productionMode)
             put(Constants.NPM_TOKEN, extension.npmFolder.absolutePath)
             put(Constants.GENERATED_TOKEN, extension.generatedFolder.absolutePath)

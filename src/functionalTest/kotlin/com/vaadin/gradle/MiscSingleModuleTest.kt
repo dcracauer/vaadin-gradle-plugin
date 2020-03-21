@@ -52,7 +52,7 @@ class MiscSingleModuleTest : AbstractGradleTest() {
             }
             dependencies {
                 // Vaadin 14
-                compile("com.vaadin:vaadin-core:14.1.16") {
+                compile("com.vaadin:vaadin-core:15.0.2") {
             //         Webjars are only needed when running in Vaadin 13 compatibility mode
                     ["com.vaadin.webjar", "org.webjars.bowergithub.insites",
                      "org.webjars.bowergithub.polymer", "org.webjars.bowergithub.polymerelements",
@@ -96,7 +96,7 @@ class MiscSingleModuleTest : AbstractGradleTest() {
             }
             dependencies {
                 // Vaadin 14
-                compile("com.vaadin:vaadin-core:14.1.16") {
+                compile("com.vaadin:vaadin-core:15.0.2") {
             //         Webjars are only needed when running in Vaadin 13 compatibility mode
                     ["com.vaadin.webjar", "org.webjars.bowergithub.insites",
                      "org.webjars.bowergithub.polymer", "org.webjars.bowergithub.polymerelements",
@@ -139,7 +139,7 @@ class MiscSingleModuleTest : AbstractGradleTest() {
             }
             dependencies {
                 // Vaadin 14
-                compile("com.vaadin:vaadin-core:14.1.16") {
+                compile("com.vaadin:vaadin-core:15.0.2") {
             //         Webjars are only needed when running in Vaadin 13 compatibility mode
                     ["com.vaadin.webjar", "org.webjars.bowergithub.insites",
                      "org.webjars.bowergithub.polymer", "org.webjars.bowergithub.polymerelements",
@@ -189,7 +189,7 @@ class MiscSingleModuleTest : AbstractGradleTest() {
             }
             dependencies {
                 // Vaadin 14
-                compile("com.vaadin:vaadin-core:14.1.16") {
+                compile("com.vaadin:vaadin-core:15.0.2") {
             //         Webjars are only needed when running in Vaadin 13 compatibility mode
                     ["com.vaadin.webjar", "org.webjars.bowergithub.insites",
                      "org.webjars.bowergithub.polymer", "org.webjars.bowergithub.polymerelements",
@@ -244,7 +244,7 @@ class MiscSingleModuleTest : AbstractGradleTest() {
             }
             
             ext {
-                set('vaadinVersion', "14.1.16")
+                set('vaadinVersion', "15.0.2")
             }
             
             configurations {
@@ -319,7 +319,7 @@ class MiscSingleModuleTest : AbstractGradleTest() {
             }
             dependencies {
                 // Vaadin 14
-                compile("com.vaadin:vaadin-core:14.1.16") {
+                compile("com.vaadin:vaadin-core:15.0.2") {
             //         Webjars are only needed when running in Vaadin 13 compatibility mode
                     ["com.vaadin.webjar", "org.webjars.bowergithub.insites",
                      "org.webjars.bowergithub.polymer", "org.webjars.bowergithub.polymerelements",

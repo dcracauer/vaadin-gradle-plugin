@@ -48,6 +48,7 @@ open class VaadinCleanTask : DefaultTask() {
     @TaskAction
     fun clean() {
         project.delete("${project.projectDir}/node_modules",
+         "${project.projectDir}/frontend/generated",
                 "${project.projectDir}/package.json",
                 "${project.projectDir}/package-lock.json",
                 "${project.projectDir}/webpack.generated.js",

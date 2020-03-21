@@ -90,19 +90,28 @@ open class VaadinBuildFrontendTask : DefaultTask() {
                 .filter { it.name.endsWith(".jar") }
                 .toSet()
 
+        // @formatter:off
         NodeTasks.Builder(getClassFinder(project),
-                extension.npmFolder,
-                extension.generatedFolder,
-                extension.frontendDirectory)
+                        extension.npmFolder, extension.generatedFolder, extension.frontendDirectory)
                 .runNpmInstall(extension.runNpmInstall)
+                .useV14Bootstrap(extension.useDeprecatedV14Bootstrapping)
                 .enablePackagesUpdate(true)
                 .useByteCodeScanner(extension.optimizeBundle)
+                .withFlowResourcesFolder(extension.flowResourcesFolder)
                 .copyResources(jarFiles)
                 .copyLocalResources(extension.frontendResourcesDirectory)
                 .enableImportsUpdate(true)
-                .withEmbeddableWebComponents(extension.generateEmbeddableWebComponents)
+                .withEmbeddableWebComponents(
+                        extension.generateEmbeddableWebComponents)
                 .withTokenFile(tokenFile)
-                .build().execute()
+                .enablePnpm(extension.pnpmEnable)
+                .withConnectApplicationProperties(
+                        extension.applicationProperties)
+                .withConnectJavaSourceFolder(extension.javaSourceFolder)
+                .withConnectGeneratedOpenApiJson(extension.openApiJsonFile)
+                .withConnectClientTsApiFolder(extension.generatedTsFolder)
+                .build()
+                .execute()
     }
 
     /**

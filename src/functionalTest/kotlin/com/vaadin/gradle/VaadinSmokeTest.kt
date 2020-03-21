@@ -42,7 +42,7 @@ class VaadinSmokeTest : AbstractGradleTest() {
             }
             dependencies {
                 // Vaadin 14
-                compile("com.vaadin:vaadin-core:14.1.16") {
+                compile("com.vaadin:vaadin-core:15.0.2") {
             //         Webjars are only needed when running in Vaadin 13 compatibility mode
                     ["com.vaadin.webjar", "org.webjars.bowergithub.insites",
                      "org.webjars.bowergithub.polymer", "org.webjars.bowergithub.polymerelements",
@@ -70,7 +70,7 @@ class VaadinSmokeTest : AbstractGradleTest() {
     fun testPrepareFrontend() {
         build("vaadinPrepareNode", "vaadinPrepareFrontend")
 
-        val generatedPackageJson = File(testProjectDir, "target/frontend/package.json")
+        val generatedPackageJson = File(testProjectDir, "build/flow-frontend/package.json")
         expect(true, generatedPackageJson.toString()) { generatedPackageJson.isFile }
         val generatedFlowBuildInfoJson = File(testProjectDir, "build/vaadin-generated/META-INF/VAADIN/config/flow-build-info.json")
         expect(true, generatedFlowBuildInfoJson.toString()) { generatedPackageJson.isFile }
@@ -95,10 +95,7 @@ class VaadinSmokeTest : AbstractGradleTest() {
 
         val build = File(testProjectDir, "build/resources/main/META-INF/VAADIN/build")
         expect(true, build.toString()) { build.exists() }
-        build.find("*.gz", 5..7)
         build.find("*.js", 5..7)
-        build.find("webcomponentsjs/webcomponents-*.js", 2..2)
-        build.find("webcomponentsjs/bundles/webcomponents-*.js", 4..4)
 
         val tokenFile = File(build, "../config/flow-build-info.json")
         val buildInfo: JsonObject = JsonUtil.parse(tokenFile.readText())
@@ -115,9 +112,6 @@ class VaadinSmokeTest : AbstractGradleTest() {
         val build = File(testProjectDir, "build/resources/main/META-INF/VAADIN/build")
         expect(true, build.toString()) { build.isDirectory }
         expect(true) { build.listFiles()!!.isNotEmpty() }
-        build.find("*.gz", 5..7)
         build.find("*.js", 5..7)
-        build.find("webcomponentsjs/webcomponents-*.js", 2..2)
-        build.find("webcomponentsjs/bundles/webcomponents-*.js", 4..4)
     }
 }

@@ -23,6 +23,38 @@ import org.gradle.api.tasks.SourceSetContainer
 import java.io.File
 
 open class VaadinFlowPluginExtension(project: Project) {
+
+
+    /**
+     * Default generated path of the OpenAPI json.
+     */
+    var openApiJsonFile = File(project.buildDir, "/generated-resources/openapi.json")
+
+    /**
+     * Java source folders for connect scanning.
+     */
+    var javaSourceFolder: File = File(project.projectDir, "/src/main/java")
+
+    /**
+     * Application properties file in Spring project.
+     */
+    var applicationProperties =  File(project.projectDir, "/src/main/resources/application.properties")
+
+    /**
+     * Enable pnmp?
+     */
+    var pnpmEnable: Boolean = false
+
+    /**
+     * Check if the plugin is running in legacy V14 bootstrap mode or not. Default: false.
+     */
+    var useDeprecatedV14Bootstrapping: Boolean = false
+
+    /**
+     * The directory where flow resources from jars will be copied to.
+     */
+    var flowResourcesFolder = File(project.buildDir, "flow-frontend")
+
     /**
      * Whether or not we are running in productionMode. Defaults to false.
      * Responds to the `-Pvaadin.productionMode` property.
@@ -54,25 +86,32 @@ open class VaadinFlowPluginExtension(project: Project) {
      * dir.
      */
     var npmFolder: File = project.projectDir
+
     /**
      * Copy the `webapp.config.js` from the specified URL if missing. Default is
      * the template provided by this plugin. Set it to empty string to disable
      * the feature.
      */
     var webpackTemplate: String = FrontendUtils.WEBPACK_CONFIG
+
     /**
      * Copy the `webapp.generated.js` from the specified URL. Default is the
      * template provided by this plugin. Set it to empty string to disable the
      * feature.
      */
     var webpackGeneratedTemplate: String = FrontendUtils.WEBPACK_GENERATED
+
     /**
      * The folder where flow will put generated files that will be used by
      * webpack.
      *
      * @todo mavi we should move this to `build/frontend/` but in order to do that we need Flow 2.2 or higher. Leaving as-is for now.
      */
-    var generatedFolder = File(project.projectDir, "target/frontend")
+    var generatedFolder = File(project.projectDir, "frontend")
+
+    var generatedTsFolder = File(generatedFolder,"/generated")
+
+
     /**
      * A directory with project's frontend source files.
      */
